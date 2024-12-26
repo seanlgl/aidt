@@ -18,4 +18,5 @@ class CosManagerTest {
     void putObject() {
         cosManager.putObject("test", "test.json");
     }
+
 }

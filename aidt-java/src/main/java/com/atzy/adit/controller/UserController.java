@@ -123,9 +123,6 @@ public class UserController {
         return ResultUtils.success(userService.getLoginUserVO(user));
     }
 
-    // endregion
-
-    // region 增删改查
 
     /**
      * 创建用户
@@ -144,6 +141,7 @@ public class UserController {
         BeanUtils.copyProperties(userAddRequest, user);
         // 默认密码 12345678
         String defaultPassword = "12345678";
+        //加密操作
         String encryptPassword = DigestUtils.md5DigestAsHex((SALT + defaultPassword).getBytes());
         user.setUserPassword(encryptPassword);
         boolean result = userService.save(user);
@@ -234,8 +232,7 @@ public class UserController {
             HttpServletRequest request) {
         long current = userQueryRequest.getCurrent();
         long size = userQueryRequest.getPageSize();
-        Page<User> userPage = userService.page(new Page<>(current, size),
-                userService.getQueryWrapper(userQueryRequest));
+        Page<User> userPage = userService.page(new Page<>(current, size), userService.getQueryWrapper(userQueryRequest));
         return ResultUtils.success(userPage);
     }
 
