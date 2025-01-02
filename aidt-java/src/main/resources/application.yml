@@ -72,3 +72,5 @@ knife4j:
         api-rule: package
         api-rule-resources:
           - com.atzy.adit.controller
+ai:
+  apiKey: ba2103a8e8ef4144aee20687c6cfe445.PDdzRRcvhdrDEVPy

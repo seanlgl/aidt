@@ -1,5 +1,6 @@
 package com.atzy.adit.controller;
 
+import cn.hutool.core.util.IdUtil;
 import cn.hutool.json.JSONUtil;
 import com.atzy.adit.annotation.AuthCheck;
 import com.atzy.adit.common.BaseResponse;
@@ -265,5 +266,12 @@ public class UserAnswerController {
         return ResultUtils.success(true);
     }
 
-    // endregion
+    /**
+     * @description:开始答题
+     * @param:
+     */
+    @GetMapping("/generate/id")
+    public BaseResponse<Long> generateUserAnswerId() {
+        return ResultUtils.success(IdUtil.getSnowflakeNextId());
+    }
 }
